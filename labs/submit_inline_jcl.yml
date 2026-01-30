@@ -1,0 +1,32 @@
+---
+- name: Submit inline JCL
+  hosts: zos
+  gather_facts: no
+  collections:
+    - ibm.ibm_zos_core
+  environment: "{{ environment_vars }}"
+
+  tasks:
+    - name: Submit inline JCL
+      zos_job_submit:
+        src: |
+          //IBMUSER1 JOB ,'IBMUSER',CLASS=A,MSGCLASS=X,
+          //         MSGLEVEL=(1,1),NOTIFY=&SYSUID
+          //COPYIN   EXEC PGM=IEBGENER
+          //SYSUT1   DD *
+          Line 1 from SYSUT1
+          Line 2 from SYSUT1
+          /*
+          //SYSUT2   DD SYSOUT=*
+          //SYSPRINT DD SYSOUT=*
+          //SYSIN    DD DUMMY
+        location: INLINE
+        wait_time_s: 30
+      register: job_output
+
+    - name: Display job results
+      debug:
+        msg:
+          - "Job Name: {{ job_output.jobs[0].job_name }}"
+          - "Job ID: {{ job_output.jobs[0].job_id }}"
+          - "Return Code: {{ job_output.jobs[0].ret_code.msg }}"
