@@ -230,9 +230,9 @@ Output record format:
 
 A new software developer has joined your company. She will be working as a software engineer on a team that supports a mainframe-based product. She will need certain data sets created under her z/OS userid:
 
-- <userid>.COBOL.SOURCE	
-- <userid>.COBOL.COPYLIB	
-- <userid>.REXX.SCRIPTS	
+- \[userid\].COBOL.SOURCE	
+- [userid].COBOL.COPYLIB	
+- [userid].REXX.SCRIPTS	
 - <userid>.DEV.JCL		
 - <userid>.QMF.SCRIPTS	
 - <userid>.DEV.PROGLIB
