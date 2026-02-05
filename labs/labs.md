@@ -233,9 +233,9 @@ A new software developer has joined your company. She will be working as a softw
 - \[userid\].COBOL.SOURCE	
 - [userid].COBOL.COPYLIB	
 - [userid].REXX.SCRIPTS	
-- <userid>.DEV.JCL		
-- <userid>.QMF.SCRIPTS	
-- <userid>.DEV.PROGLIB
+- [userid].DEV.JCL		
+- [userid].QMF.SCRIPTS	
+- [userid].DEV.PROGLIB
 
 All these are PDSE data sets (LIBRARY type). TEST.PROGLIB is a program library containing executables. The others are all source libraries and all contain 80-byte card-image records – same attributes.
 
@@ -244,12 +244,11 @@ Develop an Ansible playbook to create these data sets on the z/OS instance. You 
 For all except the program library, add a member after allocating the PDSE.
 
 | Data Set          |  Member Name   |  Contents |
-
-- COBOL.SOURCE        README          COBOL SOURCE CODE GOES HERE
-- COBOL.COPYLIB       README          COBOL COPYBOOKS GO HERE 
-- REXX.SCRIPTS        README          REXX SCRIPTS GO HERE 
-- QMF.SCRIPTS         README          SQL SCRIPTS FOR DB2 GO HERE 
-- DEV.JCL             JOBCARD         (a JOB card with appropriate settings for the environment)
+| COBOL.SOURCE      |  README        |  COBOL SOURCE CODE GOES HERE |
+| COBOL.COPYLIB     |  README        |  COBOL COPYBOOKS GO HERE | 
+| REXX.SCRIPTS      |  README        |  REXX SCRIPTS GO HERE | 
+| QMF.SCRIPTS       |  README        |  SQL SCRIPTS FOR DB2 GO HERE |
+| DEV.JCL           |  JOBCARD       |  (a JOB card with appropriate settings for the environment) |
 
 Make good use of Ansible features such as loops and variables, and factor out repetitive tasks, to keep the playbook clean and understandable. That is the main point of the exercise - the technical details are already familiar to you by now.
 
