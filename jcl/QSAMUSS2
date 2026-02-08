@@ -1,0 +1,18 @@
+//IBMUSERU JOB ,'QSAM 2 USS',
+//         CLASS=A,
+//         MSGCLASS=X,
+//         MSGLEVEL=(1,1),
+//         NOTIFY=&SYSUID
+//TOTEMP   EXEC PGM=IEBGENER
+//SYSIN    DD DUMMY
+//SYSOUT   DD SYSOUT=*
+//SYSPRINT DD SYSOUT=*
+//SYSUT1   DD DSN=&SYSUID..QSAM1,DISP=SHR
+//SYSUT2   DD DSN=&SYSUID..TEMP.PS,
+//         DISP=(NEW,PASS,DELETE),
+//         SPACE=(TRK,(1,1)),UNIT=SYSDA,
+//         DCB=(RECFM=FB,LRECL=80,BLKSIZE=80)
+//COPY     EXEC PGM=BPXBATCH,
+//         PARM='SH cp /u/ibmuser/temp_ps.txt /u/ibmuser/data1.txt'
+//STDOUT   DD SYSOUT=*
+//STDERR   DD SYSOUT=*

@@ -1,0 +1,30 @@
+//IBMUSERS JOB ,'SORT 6',
+//         CLASS=A,MSGCLASS=X,MSGLEVEL=(1,1),
+//         NOTIFY=&SYSUID
+//********************************************************************
+//* Catalog the SORTOUT data set
+//********************************************************************
+//SORT2    EXEC PGM=ICEMAN
+//SYSOUT   DD SYSOUT=*
+//SORTIN   DD   *
+ALABAMA       HUNTSVILLE          AL
+GEORGIA       ATLANTA             GA
+INDIANA       INDIANAPOLIS        IN
+INDIANA       INDIANAPOLIS        IN
+GEORGIA       COLUMBUS            GA
+NEW JERSEY    JERSEY CITY         NJ
+ALABAMA       MONTGOMERY          AL
+NEW JERSEY    TRENTON             NJ
+GEORGIA       ATLANTA             GA
+INDIANA       SOUTH BEND          IN
+/*
+//SYSIN    DD   *
+  SORT FIELDS=(1,14,CH,A,15,20,CH,D)
+  OUTREC BUILD=(35,2,C' ',15,20,C' DATE: ',DATE3-1)
+  SUM FIELDS=NONE
+/*
+//SORTOUT  DD DSN=&SYSUID..TEST.SORTOUT,
+//         DISP=(NEW,CATLG,DELETE),
+//         DCB=&SYSUID..MODEL.DSCB80,
+//         SPACE=(TRK,(1,1),RLSE),
+//         UNIT=SYSDA

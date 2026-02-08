@@ -1,0 +1,33 @@
+//IBMUSERS JOB ,'SORT SETUP 1',
+//         CLASS=A,MSGCLASS=X,MSGLEVEL=(1,1),
+//         NOTIFY=&SYSUID
+//********************************************************************
+//* Setup input data set for SORT1 example
+//********************************************************************
+//CLEAR    EXEC PGM=IEFBR14
+//SYSPRINT DD SYSOUT=*
+//DD1      DD DSN=&SYSUID..SORTIN.EXAMPLE1,
+//         DISP=(MOD,DELETE,DELETE),
+//         DCB=&SYSUID..MODEL.DSCB80,
+//         SPACE=(TRK,(1,1),RLSE),
+//         UNIT=SYSDA
+//DD2      DD DSN=&SYSUID..SORTOUT.EXAMPLE1,
+//         DISP=(MOD,DELETE,DELETE),
+//         DCB=&SYSUID..MODEL.DSCB80,
+//         SPACE=(TRK,(1,1),RLSE),
+//         UNIT=SYSDA
+//*
+//LOAD     EXEC PGM=IEBGENER
+//SYSPRINT DD SYSOUT=*
+//SYSIN    DD DUMMY
+//SYSUT1   DD   *
+GEORGIA       ATLANTA
+INDIANA       INDIANAPOLIS
+ALABAMA       MONTGOMERY
+NEW JERSEY    TRENTON
+/*
+//SYSUT2   DD DSN=&SYSUID..SORTIN.EXAMPLE1,
+//         DISP=(NEW,CATLG,DELETE),
+//         DCB=&SYSUID..MODEL.DSCB80,
+//         SPACE=(TRK,(1,1),RLSE),
+//         UNIT=SYSDA
